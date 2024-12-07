@@ -47,7 +47,7 @@
 
 
 
-sec_get = 9999 
+sec_get = 70
 hour = (sec_get // 60) // 60
 minutes = (sec_get % 60) % 60
 print(hour)

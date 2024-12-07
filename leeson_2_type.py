@@ -41,9 +41,9 @@
 
 
 
-num_inp_1=input("==)")
-print("ответ:", int(num_inp_1*12))
-print(type(num_inp_1))
+# num_inp_1=input("==)")
+# print("ответ:", int(num_inp_1*12))
+# print(type(num_inp_1))
 
 
 

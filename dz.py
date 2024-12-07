@@ -20,19 +20,19 @@ print("Объем:" , answer_1 * answer_2 * answer_3 , "куб. см.")
 
 # задача 3
 
-num=input("==)")
-ans=int(num)
-print("Итоговая зп:" , ans / 100 * 5 + 100)
+# num=input("==)")
+# ans=int(num)
+# print("Итоговая зп:" , ans / 100 * 5 + 100)
 
-# задача 4
+# # задача 4
 
-kop=1250
-print(kop//100)
-print(kop%100)
+# kop=1250
+# print(kop//100)
+# print(kop%100)
 
 
 
- 
+
 
 
 
