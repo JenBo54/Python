@@ -1,4 +1,4 @@
-print(10 % 3)
+# print(10 % 3)
 
 
 
@@ -13,7 +13,12 @@ print(10 % 3)
 
 
 
+num_2 = input("ввод/++")
+while(num_2 != "exit" and num_2 != "1"):
+    print(num_2 , "(no exit)")
+    num_2 = input("ввод/++")
 
+print("😎")
 
 
 
