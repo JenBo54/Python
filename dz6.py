@@ -33,9 +33,7 @@ obj_3= {}
 num_3= "hello python"
 
 for i in range(len(num_3)):
-    obj_3.update({
-        num_3[i]: i
-    })
+    obj_3[num_3[i]]= i
     
 print(obj_3)
 
