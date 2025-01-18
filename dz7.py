@@ -81,23 +81,14 @@ print(fun(arr_1))
 
 # 5
 
-def fun(arr):
-    if not arr:
-        return []
-    if isinstance(arr[0], str):
-        return fun(arr[1:])
-    else:
-        return [arr[0]] + fun(arr[1:])
-
-
-arr = [1, 'text_1', 2, 'text', 42]
-print(fun(arr))
+# def fun(arr):
+#     if not arr:
+#         return []
+#     if isinstance(arr[0], str):
 
 
 
-
-
-
+# 4
 
 
 
