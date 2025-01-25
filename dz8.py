@@ -4,7 +4,7 @@
 
 
 
-# inp = input("==>")
+inp = input("==>")
 
 match(inp):
     case("1"):
