@@ -1,41 +1,41 @@
 1
 
-class Calculator:
-    def __init__(self, num_1, num_2):
-        self.numbers= [num_1, num_2]
+# class Calculator:
+#     def __init__(self, num_1, num_2):
+#         self.numbers= [num_1, num_2]
 
-    def fun_0(self):
-        self.numbers.append
+#     def fun_0(self):
+#         self.numbers.append
         
 
 
-    def fun_1(self):
-        print(self.num_1 * self.num_2)
+#     def fun_1(self):
+#         print(self.num_1 * self.num_2)
 
-    def fun_2(self):
-        print(self.num_1 / self.num_2)
+#     def fun_2(self):
+#         print(self.num_1 / self.num_2)
 
-    def fun_3(self):
-        print(self.num_1 + self.num_2)
+#     def fun_3(self):
+#         print(self.num_1 + self.num_2)
 
-    def fun_4(self):
-        print(self.num_1 - self.num_2)
+#     def fun_4(self):
+#         print(self.num_1 - self.num_2)
 
 
 
-calc_1 = Calculator(int(input("==>")), int(input("==>")))
+# calc_1 = Calculator(int(input("==>")), int(input("==>")))
 
-sigh= str(input("==>"))
-if (sigh == "*"):
-    print(calc_1.fun_1())
-elif (sigh == "/"):
-    print(calc_1.fun_2())
-elif (sigh == "+"):
-    print(calc_1.fun_3())
-elif (sigh == "-"):
-    print(calc_1.fun_4())
-else:
-    print("error")
+# sigh= str(input("==>"))
+# if (sigh == "*"):
+#     print(calc_1.fun_1())
+# elif (sigh == "/"):
+#     print(calc_1.fun_2())
+# elif (sigh == "+"):
+#     print(calc_1.fun_3())
+# elif (sigh == "-"):
+#     print(calc_1.fun_4())
+# else:
+#     print("error")
 
 
 
