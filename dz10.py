@@ -1,6 +1,8 @@
-text = open("text.txt" , "w")
-text.write("")
-text.close()
+import json
+
+# text = open("text.txt" , "w")
+# text.write("")
+# text.close()
 
 
 
@@ -13,51 +15,51 @@ text.close()
 
 
 
-def fun():
-    text = open("text.txt", "a")
-    text.write(input("==>"))
-    text.close()
-    text = open("text.txt", "r")
-    content = text.read()
-    text.close()
-    return content
+# def fun():
+#     text = open("text.txt", "a")
+#     text.write(input("==>"))
+#     text.close()
+#     text = open("text.txt", "r")
+#     content = text.read()
+#     text.close()
+#     return content
 
-print(fun())
-
-
+# print(fun())
 
 
-2 
 
 
-def calc():
-    x1= int(input("==>"))
-    x2= int(input("==>"))
-    d= input("введи действие")
-    if (d== "+"):
-        answer= x1 + x2
-        print(answer)
-    elif (d== "-"):
-        answer= x1 - x2
-        print(answer)
-    elif (d== "/"):
-        answer= x1 / x2
-        print(answer)
-    elif (d== "*"):
-        answer= x1 * x2
-        print(answer)
-    else:
-        print("error")
-
-    with open("his.txt", "a", encoding="utf-8") as history:
-        history.write(str(answer))
-
-print(calc())
+# 2 
 
 
-with open("his.txt", "r", encoding="utf-8") as history:
-    print("История вычислений:")
-    print(history.read())
+# def calc():
+#     x1= int(input("==>"))
+#     x2= int(input("==>"))
+#     d= input("введи действие")
+#     if (d== "+"):
+#         answer= x1 + x2
+#         print(answer)
+#     elif (d== "-"):
+#         answer= x1 - x2
+#         print(answer)
+#     elif (d== "/"):
+#         answer= x1 / x2
+#         print(answer)
+#     elif (d== "*"):
+#         answer= x1 * x2
+#         print(answer)
+#     else:
+#         print("error")
+
+#     with open("his.txt", "a", encoding="utf-8") as history:
+#         history.write(str(answer))
+
+# print(calc())
+
+
+# with open("his.txt", "r", encoding="utf-8") as history:
+#     print("История вычислений:")
+#     print(history.read())
 
 
 
@@ -65,27 +67,28 @@ with open("his.txt", "r", encoding="utf-8") as history:
 
 # 3
 
-
+file_3 = open("w.json" , "r")
+file_3.close()
 
 def load():
     w= input("==>")
     if (w== "new"):
-        users = open("p.txt", "a")
-        users.write(input("==>"))
+        users = open("w.json", "w")  
+        arr_2 = json.loads(users.read())
+        arr_2[input("==>")] = input("==>")
         users.close()
-    # elif (w== "del"):
-    #     dele= open()
+    elif (w== "del"):
+        users= open("w.json", "w")
+        arr_2 = json.loads(users.read())
+        u= input("==>")
+        print(arr_2.pop(u))
 
     elif (w== "ex" or "exit"):
-        use = open("p.txt", "r")
-        use.close()
+        use = open("w.json", "r")
         return use
 
-print(load)
 
-
-
-
+print(load())
 
 
 
