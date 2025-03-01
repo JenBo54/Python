@@ -67,29 +67,35 @@ import json
 
 # 3
 
+
+
+
 file_3 = open("w.json" , "r")
 file_3.close()
 
 def load():
-    w= input("==>")
+    users = open("w.json", "r")
+    arr_2 = json.loads(users.read())
+
     if (w== "new"):
-        users = open("w.json", "w")  
-        arr_2 = json.loads(users.read())
-        arr_2[input("==>")] = input("==>")
-        users.close()
+        print(arr_2)
+        arr_2[input("name ==>")] = input("password ==>")
+        with open("w.json", "w") as file:
+            json.dump(arr_2 , file)
+
     elif (w== "del"):
-        users= open("w.json", "w")
-        arr_2 = json.loads(users.read())
-        u= input("==>")
-        print(arr_2.pop(u))
-
-    elif (w== "ex" or "exit"):
-        use = open("w.json", "r")
-        return use
+        user= input("==>")
+        del arr_2[user]
+        print("deleted")
+        with open("w.json", "w") as file:
+            json.dump(arr_2, file)
 
 
-print(load())
 
+w = input("==>")
+while(w != "ex" or w != "exit"):
+    load()
+    w= input("==>")
 
 
 
