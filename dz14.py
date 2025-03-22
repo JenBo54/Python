@@ -90,7 +90,7 @@ def fun_1():
         button_1 = Button(text="следующий товар" , command=fun_b_1)
         button_1.place(x=30 , y=200)
         button_2 = Button(text="завершить ввод" , command=fun_b_2)
-        button_2.place(x=130 , y=200)
+        button_2.place(x=150 , y=200)
 
 
 
