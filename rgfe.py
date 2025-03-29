@@ -1,44 +1,62 @@
 from tkinter import *
+import random
 
 
 window = Tk()
-window.title("lesson 21")
-# меняем ширину высоту и координаты окна
-window.geometry("700x500+0+0")
+window.title("lesson 28")
+window.geometry("600x500")
 window.config(bg="#C445FF")
 
 
-
-lab_text_1 = Label(text="hello world" , bg="#75FF9A", fg="#FF7530" , font=["Segoe UI Black" , 15])
-lab_text_1.place(x= 300 , y=200 , height=80 , width=200)
-
-
-
-# ввод данных
-entry_1 = Entry(bg="#101C57", fg="#82DCFF" , font=["Segoe UI Black" , 15])
-entry_1.place(x= 300 , y=100 , width=180)
+canV = Canvas(height=500 , width=600 , bg="#ffffff")
+canV.place(x=0 , y=0)
 
 
 
-def fun_b_1():
-    # entry_1.get() - возвращает текст Entry
-    print(entry_1.get())
-    lab_text_1.config(text=entry_1.get())
-
-    # меняем ширину высоту и координаты окна через Entry
-    window.geometry(entry_1.get())
-
-button_1 = Button(text="but 1" , command=fun_b_1 )
-button_1.place(x= 300 , y=300)
+robot_obj={
+    "x1":0,
+    "y1":0,
+    "x2":50,
+    "y2":50,
+}
 
 
+# монетка появляется рандомно
+rand_x = random.randint(0,11)
+rand_y = random.randint(1, 9)
+coin_obj={
+    "x1":50 * rand_x,
+    "y1":50 * rand_y,
+    "x2":(50 * rand_x) + 50,
+    "y2":(50 * rand_y) + 50,
+}
 
-def fun_b_2():
-    # получаем ширину высоту и координаты окна
-    lab_text_1.config(text=window.geometry())
-button_2 = Button(text="get geo" , command=fun_b_2 )
-button_2.place(x= 100 , y=300)
+
+canV.create_rectangle(list(robot_obj.values()) , width=0 , fill="#3B7893")
+canV.create_oval(list(coin_obj.values()) , width=0 , fill="#FFEA2E")
+
+
+
+def fun(event):
+    print(event.keycode)
+    # меняем координаты робота
+    if((event.keycode == 65 or event.keycode == 37) and robot_obj["x1"] >0):
+        robot_obj["x1"]-=50
+        robot_obj["x2"]-=50
+    elif((event.keycode == 68 or event.keycode == 39) and robot_obj["x2"] < 600):
+        robot_obj["x1"]+=50
+        robot_obj["x2"]+=50
+    elif((event.keycode == 87 or event.keycode == 38) and robot_obj["y1"] >0):
+        robot_obj["y1"]-=50
+        robot_obj["y2"]-=50
+    elif((event.keycode == 83 or event.keycode == 40) and robot_obj["y2"] < 500):
+        robot_obj["y1"]+=50
+        robot_obj["y2"]+=50
+
+    
+    # отрисовка робота
+    canV.create_rectangle(0,0 ,600,500, width=0 , fill="#FFFFFF")
+    canV.create_rectangle(list(robot_obj.values()) , width=0 , fill="#3B7893")
+window.bind("<KeyPress>",fun)
+
 window.mainloop()
-
-
-

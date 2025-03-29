@@ -52,9 +52,9 @@ def fun_b_2():
     global w
     global f
     h += 10  
-    button_1.config(height=h)
+    button_1.place(height=h)
     w += 10  
-    button_1.config(width=w)
+    button_1.place(width=w)
     f += 1  
     button_1.config(font=["Yu Gothic UI Light" , f])
 
@@ -108,17 +108,6 @@ def funPress(event):
 
 window.bind("<Return>" , fun_4_b)
 window.bind("<KeyPress>" , funPress)
-
-def funRelease(event):
-    if(event.keycode == 17):
-        button_2.place(x= 10000)
-        button_3.place(x= 10000)
-        entry_1.place(x=10000)
-        entry_2.place(x=10000)
-
-
-
-window.bind("<KeyRelease>" , funRelease)
 
 
 
