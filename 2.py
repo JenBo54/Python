@@ -1,53 +1,60 @@
 from tkinter import *
 
-
-
+# 1 — основное окно
 window = Tk()
 window.title("lesson 28")
-window.geometry("900x500")
-window.config(bg="#C445FF")
+window.geometry("600x500")
+window.config(bg="#000000")
 
+# 2 — канвас
+canV = Canvas(window, width=600, height=500, bg="#ffffff")
+canV.place(x=0, y=0)
 
-text_l = Label(text="" , font=("" , 14))
-text_l.place(x=10 , y=100)
+# 3 — переменные
+counter = 0
+dragging = False
+start_x = 0
+start_y = 0
 
+# 4 — функция увеличения счётчика
+def fun_click():
+    global counter
+    counter += 1
+    button_click.config(text=f"clicks: {counter}")
 
+# 5 — обработка начала перетаскивания
+def start_drag(event):
+    global dragging, start_x, start_y
+    dragging = True
+    start_x = event.x
+    start_y = event.y
 
-def funPress(event):
-    # event - получаем информацию о обработчике (клавиша)
-    text_l.config(text=event)
+# 6 — обработка движения
+def do_drag(event):
+    global dragging, start_x, start_y
+    if dragging:
+        dx = event.x - start_x
+        dy = event.y - start_y
+        canV.move(window_id, dx, dy)
 
-    # event.keysym - название клавиши
-    # text_l.config(text=event.keysym)
-    # if(event.keysym == "r"):
-    #     window.config(bg="#FF4545")
+# 7 — окончание перетаскивания
+def stop_drag(event):
+    global dragging
+    dragging = False
 
-    # event.keycode - номер клавиши
-    if(event.keycode == 82):
-        window.config(bg="#FF4545")
+# 8 — создаём отдельное "окно" в canvas
+frame = Frame(canV, bg="#dddddd", bd=3, relief=RIDGE)
 
-    # event.state - информация о дополнительно зажатых клавиш
-    # text_l.config(text=event.state)
-    if(event.keycode == 82 and event.state == 12):
-        window.config(bg="#7FFF3A")
+button_click = Button(frame, text="clicks: 0", font=("Arial", 12), command=fun_click)
+button_click.pack(padx=10, pady=10)
 
-# обработчик нажатия клавиши клавиатуры 
-window.bind("<KeyPress>" , funPress)
+# 9 — добавляем frame в canvas
+window_id = canV.create_window(200, 200, window=frame, anchor="nw")
 
+# 10 — привязка событий
+canV.tag_bind(window_id, "<Button-1>", start_drag)
+canV.tag_bind(window_id, "<B1-Motion>", do_drag)
+canV.tag_bind(window_id, "<ButtonRelease-1>", stop_drag)
 
-
-
-def funRelease(event):
-    # event - получаем информацию о обработчике (клавиша)
-    text_l.config(text=event)
-
-    # event.keycode - номер клавиши
-    if(event.keycode == 82):
-        window.config(bg="#4589FF")
-
-# обработчик отжатие клавиши клавиатуры
-window.bind("<KeyRelease>" , funRelease)
-
-
-
+# 11 — запускаем окно
 window.mainloop()
