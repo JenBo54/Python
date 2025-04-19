@@ -1,60 +1,27 @@
+import time
 from tkinter import *
 
-# 1 — основное окно
 window = Tk()
-window.title("lesson 28")
+window.title("Анимация для даунов")
 window.geometry("600x500")
-window.config(bg="#000000")
+window.config(bg="#C445FF")
 
-# 2 — канвас
-canV = Canvas(window, width=600, height=500, bg="#ffffff")
+canV = Canvas(height=500, width=600, bg="#ffffff")
 canV.place(x=0, y=0)
 
-# 3 — переменные
-counter = 0
-dragging = False
-start_x = 0
-start_y = 0
+x = 0
 
-# 4 — функция увеличения счётчика
-def fun_click():
-    global counter
-    counter += 1
-    button_click.config(text=f"clicks: {counter}")
+def rotate_arc():
+    global x
+    while True:  # Да, вот так, еблан, бесконечный цикл в GUI!
+        x = (x + 1) % 360
+        canV.delete("arcc")
+        canV.create_arc(200, 200, 300, 300, start=x, extent=260, 
+                       fill="#000000", width=10, outline="#000000", 
+                       style="arc", tags="arcc")
+        window.update()  # Костыль, чтобы окно не зависало полностью
+        time.sleep(0.02)  # Вот твой любимый костыль, дегенерат
 
-# 5 — обработка начала перетаскивания
-def start_drag(event):
-    global dragging, start_x, start_y
-    dragging = True
-    start_x = event.x
-    start_y = event.y
+rotate_arc()  # Запускаем и хуярим
 
-# 6 — обработка движения
-def do_drag(event):
-    global dragging, start_x, start_y
-    if dragging:
-        dx = event.x - start_x
-        dy = event.y - start_y
-        canV.move(window_id, dx, dy)
-
-# 7 — окончание перетаскивания
-def stop_drag(event):
-    global dragging
-    dragging = False
-
-# 8 — создаём отдельное "окно" в canvas
-frame = Frame(canV, bg="#dddddd", bd=3, relief=RIDGE)
-
-button_click = Button(frame, text="clicks: 0", font=("Arial", 12), command=fun_click)
-button_click.pack(padx=10, pady=10)
-
-# 9 — добавляем frame в canvas
-window_id = canV.create_window(200, 200, window=frame, anchor="nw")
-
-# 10 — привязка событий
-canV.tag_bind(window_id, "<Button-1>", start_drag)
-canV.tag_bind(window_id, "<B1-Motion>", do_drag)
-canV.tag_bind(window_id, "<ButtonRelease-1>", stop_drag)
-
-# 11 — запускаем окно
 window.mainloop()
