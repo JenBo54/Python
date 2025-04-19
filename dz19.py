@@ -11,7 +11,7 @@ canV.place(x=0, y=0)
 
 x = 0
 
-def rotate_arc():
+def fun():
     global x
     while True:
         x = (x + 1) % 360
@@ -20,7 +20,7 @@ def rotate_arc():
         window.update()
         time.sleep(0.02)
 
-rotate_arc()
+fun()
 window.mainloop()
 
 
