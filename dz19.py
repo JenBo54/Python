@@ -2,7 +2,7 @@ import time
 from tkinter import *
 
 window = Tk()
-window.title("Анимация для даунов")
+window.title("Анимация")
 window.geometry("600x500")
 window.config(bg="#C445FF")
 
